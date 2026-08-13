@@ -60,7 +60,7 @@ while True:
 print("Original List:", a)
 sorted_list = selection_sort(a)
 print("Sorted List:  ", sorted_list)'''
-def merge_sort(arr):
+'''def merge_sort(arr):
     if len(arr) > 1:
         mid = len(arr) // 2
         L = arr[:mid]
@@ -100,7 +100,37 @@ while True:
 
 print("Original List:", a)
 sorted_list = merge_sort(a)
+print("Sorted List:  ", sorted_list)'''
+def quick_sort(arr, low=0, high=None):
+    if high is None:
+        high = len(arr) - 1
+
+    if low < high:
+        pivot = arr[high]
+        i = low - 1
+
+        for j in range(low, high):
+            if arr[j] <= pivot:
+                i += 1
+                arr[i], arr[j] = arr[j], arr[i]
+        arr[i + 1], arr[high] = arr[high], arr[i + 1]
+        pi = i + 1
+        quick_sort(arr, low, pi - 1)
+        quick_sort(arr, pi + 1, high)
+
+    return arr
+
+a = []
+while True:
+    elem = input("Enter an element (or enter stop to finish):- ")
+    if elem.lower() == "stop":
+        break
+    a.append(int(elem))
+
+print("Original List:", a)
+sorted_list = quick_sort(a)
 print("Sorted List:  ", sorted_list)
+
 
 
 
